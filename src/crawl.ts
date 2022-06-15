@@ -40,6 +40,8 @@ async function main() {
   let path = pathlib.join(outDir, filename);
 
   if (fs.existsSync(path)) {
+    console.log("File exists, skipping.");
+    return;
     let backupFile = `daily-${puzzle.id}-backup${Date.now()}.json`;
     let backupPath = pathlib.join(outDir, backupFile);
     await fs.move(path, backupPath);
