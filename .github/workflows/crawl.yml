@@ -1,0 +1,30 @@
+name: Daily crawl
+
+on:
+  schedule:
+  - cron: "0 8 * * *"
+  workflow_dispatch:
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.3.0
+        with:
+          node-version: 16.x
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Crawl
+        run: npm run crawl
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "${GITHUB_REPOSITORY_OWNER}"
+          git config --global user.email "${GITHUB_REPOSITORY_OWNER}@users.noreply.github.com"
+          git add puzzles
+          git commit -m "auto commit: `date "+%Y-%m-%d %H:%M:%S"`"
+          git push
