@@ -1,0 +1,24 @@
+{
+  "name": "vertex-archive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "convert.js",
+  "scripts": {
+    "convert": "node build/convert",
+    "crawl": "node build/crawl",
+    "build": "tsc -p .",
+    "dev": "tsc -w -p .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^10.0.1",
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/node-fetch": "^2.6.1"
+  }
+}
